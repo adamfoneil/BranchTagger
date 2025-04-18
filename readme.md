@@ -28,3 +28,6 @@ In your workflow, have a step like this:
 ```
 
 For some reason I have changed the filename to `next-version.json`. You can have any filename.
+
+I had a lot of ChatGPT help on this since I've never done anything like this before:
+https://chatgpt.com/share/68025295-54c8-8011-abbb-7cf6e24f1499
