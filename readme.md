@@ -26,3 +26,4 @@ In your workflow, have a step like this:
     branch: ${{ github.ref_name }}
     filename: next-version.json
 ```
+For some reason I have changed the filename to `next-version.json`.
