@@ -6,7 +6,7 @@ inputs:
     description: 'Branch to track (defaults to current branch)'
     required: false
     default: ''
-  tracker:
+  filename:
     description: 'Path to version tracker file (JSON)'
     required: false
     default: 'version.json'
@@ -24,4 +24,4 @@ runs:
       shell: bash
       run: |
         chmod +x ${{ github.action_path }}/entrypoint.sh
-        ${{ github.action_path }}/entrypoint.sh "${{ inputs.branch }}" "${{ inputs.tracker }}"
+        ${{ github.action_path }}/entrypoint.sh "${{ inputs.branch }}" "${{ inputs.filename }}"
