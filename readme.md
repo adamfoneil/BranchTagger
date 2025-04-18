@@ -20,7 +20,9 @@ Example:
 In your workflow, have a step like this:
 
 ```yaml
-uses: adamfoneil/branch-tagger@v1
-with:
-  branch: ${{ github.ref_name }}  
+- name: Set version tag
+  uses: adamfoneil/branch-tagger@main
+  with:
+    branch: ${{ github.ref_name }}
+    filename: next-version.json
 ```
