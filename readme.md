@@ -17,4 +17,10 @@ Example:
 }
 ```
 
-In your workflow
+In your workflow, have a step like this:
+
+```yaml
+uses: adamfoneil/branch-tagger@v1
+with:
+  branch: ${{ github.ref_name }}  
+```
