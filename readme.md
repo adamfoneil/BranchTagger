@@ -17,7 +17,10 @@ Example:
 }
 ```
 
-In your workflow, have a step like this:
+In your workflow, make sure you have
+- `fetch-depth: 2` in your checkout step. This has to do with ensuring the detection of true changes vs merely a change to the version tracker has occurred.
+- runs with `permissions, contents: write` because this action will push a tag to your repo
+- a step like this
 
 ```yaml
 - name: Set version tag
@@ -27,7 +30,7 @@ In your workflow, have a step like this:
     filename: next-version.json
 ```
 
-For some reason I have changed the filename to `next-version.json`. You can have any filename.
+See full example from a project of mine: [LiteInvoice/setversion.yml](https://github.com/adamfoneil/LiteInvoice/blob/master/.github/workflows/setversion.yml)
 
 I had a lot of ChatGPT help on this since I've never done anything like this before:
 
