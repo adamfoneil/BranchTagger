@@ -15,7 +15,7 @@ if [ ! -f "$TRACKER" ]; then
 fi
 
 # Get list of changed files in the latest commit
-CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r HEAD)
+CHANGED_FILES=$(git show --pretty="" --name-only HEAD)
 
 # If the only change was to the tracker file, skip
 if [ "$CHANGED_FILES" = "$TRACKER" ]; then
