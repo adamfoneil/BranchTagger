@@ -15,7 +15,7 @@ if [ ! -f "$TRACKER" ]; then
 fi
 
 # Get list of changed files in the latest commit
-CHANGED_FILES=$(git show --pretty="" --name-only HEAD)
+CHANGED_FILES=$(git diff --name-only HEAD^ HEAD)
 
 echo "🔍 TRACKER: [$TRACKER]"
 echo "🔍 CHANGED_FILES:"
