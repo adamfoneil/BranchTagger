@@ -17,11 +17,22 @@ fi
 # Get list of changed files in the latest commit
 CHANGED_FILES=$(git show --pretty="" --name-only HEAD)
 
-# If the only change was to the tracker file, skip
-if [ "$CHANGED_FILES" = "$TRACKER" ]; then
-  echo "Only version tracker changed — skipping tagging"
+echo "🔍 TRACKER: [$TRACKER]"
+echo "🔍 CHANGED_FILES:"
+echo "$CHANGED_FILES" | sed 's/^/ - /'
+
+# Count changed files
+CHANGED_COUNT=$(echo "$CHANGED_FILES" | wc -l)
+
+echo "🔍 CHANGED_COUNT: $CHANGED_COUNT"
+
+# Check if the only change is the tracker file
+if [ "$CHANGED_COUNT" -eq 1 ] && [ "$CHANGED_FILES" = "$TRACKER" ]; then
+  echo "✅ Only $TRACKER was changed — skipping version tag"
   echo "skip=true" >> "$GITHUB_OUTPUT"
   exit 0
+else
+  echo "📣 Continuing — other files changed or multiple files"
 fi
 
 CURRENT=$(jq -r --arg branch "$BRANCH" '.[$branch].commitId // ""' "$TRACKER")
