@@ -14,6 +14,16 @@ if [ ! -f "$TRACKER" ]; then
   echo "{}" > "$TRACKER"
 fi
 
+# Get list of changed files in the latest commit
+CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r HEAD)
+
+# If the only change was to the tracker file, skip
+if [ "$CHANGED_FILES" = "$TRACKER" ]; then
+  echo "Only version tracker changed — skipping tagging"
+  echo "skip=true" >> "$GITHUB_OUTPUT"
+  exit 0
+fi
+
 CURRENT=$(jq -r --arg branch "$BRANCH" '.[$branch].commitId // ""' "$TRACKER")
 if [ "$CURRENT" == "$COMMIT_ID" ]; then
   echo "No new commit for $BRANCH; skipping"
