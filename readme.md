@@ -1,6 +1,6 @@
 This is a GitHub action for tagging branches with an incrementing version number, intended as a simpler alternative to something like [Semantic Release](https://github.com/semantic-release/semantic-release). The version tag is written as `v{number}` where `number` is just an incrementing integer, not a semantic version.
 
-To use this, create a file in the root of your repo called `next-version.json` like this:
+To use this, create a file in the root of your repo called `version.json` like this:
 
 ```json
 {
