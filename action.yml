@@ -1,4 +1,4 @@
-name: 'Simple Branch Tagger'
+name: 'Branch Tagger'
 description: 'Tags the repo with an incremented version number per branch if the latest commit has changed'
 author: 'Adam ONeil'
 inputs:
@@ -9,7 +9,7 @@ inputs:
   tracker:
     description: 'Path to version tracker file (JSON)'
     required: false
-    default: 'next-version.json'
+    default: 'version.json'
 
 outputs:
   tag:
