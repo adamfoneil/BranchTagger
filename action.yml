@@ -1,0 +1,27 @@
+name: 'Simple Branch Tagger'
+description: 'Tags the repo with an incremented version number per branch if the latest commit has changed'
+author: 'Adam ONeil'
+inputs:
+  branch:
+    description: 'Branch to track (defaults to current branch)'
+    required: false
+    default: ''
+  tracker:
+    description: 'Path to version tracker file (JSON)'
+    required: false
+    default: 'next-version.json'
+
+outputs:
+  tag:
+    description: 'The tag that was applied (if any)'
+  skip:
+    description: 'true if no tag was applied'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Run tagger
+      shell: bash
+      run: |
+        chmod +x ${{ github.action_path }}/entrypoint.sh
+        ${{ github.action_path }}/entrypoint.sh "${{ inputs.branch }}" "${{ inputs.tracker }}"
