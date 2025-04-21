@@ -35,3 +35,12 @@ See full example from a project of mine: [LiteInvoice/setversion.yml](https://gi
 I had a lot of ChatGPT help on this since I've never done anything like this before:
 
 https://chatgpt.com/share/68025295-54c8-8011-abbb-7cf6e24f1499
+
+# Sample output
+
+Here's what the version tagging looks like in git history:
+
+![image](https://github.com/user-attachments/assets/7ea82f04-d612-4037-bbf2-52c1ece952ca)
+
+# To do
+The next step here is to make the version number visible somewhere in the application. Currently it's only in your git history. It would be nice to see the version number somewhere in your app. I was hoping something like [Pekspro.BuildInformationGenerator](https://github.com/pekspro/BuildInformationGenerator) would have tag info, but it doesn't seem to.
