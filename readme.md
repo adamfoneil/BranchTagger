@@ -44,3 +44,6 @@ Here's what the version tagging looks like in git history:
 
 # To do
 The next step here is to make the version number visible somewhere in the application. Currently it's only in your git history. It would be nice to see the version number somewhere in your app. I was hoping something like [Pekspro.BuildInformationGenerator](https://github.com/pekspro/BuildInformationGenerator) would have tag info, but it doesn't seem to.
+
+# What this is not
+I had an earlier iteration of this that used the GitHub Actions `run_number` as a tag. That was the wrong approach because the run number increments even if there's no code change. This action looks at your commit history to determine if there's an actual change. It's not dependent on the run number.
