@@ -47,11 +47,11 @@ git tag "$TAG"
 git push origin "$TAG"
 
 # so that individual apps can know the version number
-for path in $OUTPUT_PATHS; 
-  do echo "Writing version to $path/version.txt" 
-  mkdir -p "$path" echo "$TAG" > "$path/version.txt"
-  git add "$path/version.txt" 
-  echo "Staged $path/version.txt" 
+for path in $OUTPUT_PATHS; do 
+  echo "Writing version to $path/version.txt" 
+  mkdir -p "$path" 
+  echo "$TAG" > "$path/version.txt"
+  git add "$path/version.txt"  
 done
 
 # update the global version number for the next run
