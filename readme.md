@@ -45,7 +45,7 @@ https://chatgpt.com/share/68025295-54c8-8011-abbb-7cf6e24f1499
 
 Here's what the version tagging looks like in git history:
 
-![image](https://github.com/user-attachments/assets/a7fb9008-29a8-4505-9eed-0b05a7e88f96)
+![image](https://github.com/user-attachments/assets/515f97a2-c851-4ecd-8259-41d0143c5a1c)
 
 Note, I had an earlier iteration of this that included the branch name in the tag, but I've removed this.
 
