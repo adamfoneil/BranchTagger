@@ -1,6 +1,6 @@
 name: 'Set Version'
 description: 'Tags the repo with an incremented version number if the latest commit has changed'
-author: 'Adam O\'Neil'
+author: 'Adam Oneil'
 inputs:
   filename:
     description: 'Path to version tracker file (JSON)'
