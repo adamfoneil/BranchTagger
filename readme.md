@@ -52,6 +52,9 @@ Note, I had an earlier iteration of this that included the branch name in the ta
 # What this is not
 I had an earlier iteration of this that used the GitHub Actions `run_number` as a tag. That was the wrong approach because the run number increments even if there's no code change. This action looks at your commit history to determine if there's an actual change. It's not dependent on the run number.
 
+# Container versioning
+One reason to use this is to tag your Docker builds with this version tag. See a [sample workflow](https://github.com/adamfoneil/LiteInvoice/blob/master/.github/workflows/main.yml) that demonstrates this.
+
 # Consuming in an Application
 Having the version number in git history as a tag is a good start. Showing it in the UI of your apps is a natural next step. What you need now is to read the `version.txt` file created in the `outputPaths` that you set above. In the example above, I have `BlazorApp`. There are many ways to do this, but they start with ensuring that the `version.txt` file is copied to your build output. Here's how I do this in the demo app: [show version info in UI](https://github.com/adamfoneil/LiteInvoice/commit/d65ffce03b02be1a2d7eb2c58e906aeb798075c4).
 
