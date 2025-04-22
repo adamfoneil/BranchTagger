@@ -60,3 +60,5 @@ jq --arg commitId "$COMMIT_ID" --argjson version "$VERSION" \
 git add "$TRACKER"
 git commit -m "Update $TRACKER"
 git push
+
+echo "tag=$TAG" >> "$GITHUB_OUTPUT"
