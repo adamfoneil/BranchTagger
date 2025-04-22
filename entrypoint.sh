@@ -54,5 +54,5 @@ do
 done
 
 # update the global version number for the next run
-jq --arg commitId "$COMMIT_ID" --argjson version "$VERSION"
+jq --arg commitId "$COMMIT_ID" --argjson version "$VERSION" \
 '.next = ($version + 1) | .commitId = $commitId' "$TRACKER" > tmp.json && mv tmp.json "$TRACKER"
