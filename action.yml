@@ -1,11 +1,7 @@
-name: 'Branch Tagger'
-description: 'Tags the repo with an incremented version number per branch if the latest commit has changed'
-author: 'Adam ONeil'
+name: 'Set Version'
+description: 'Tags the repo with an incremented version number if the latest commit has changed'
+author: 'Adam O\'Neil'
 inputs:
-  branch:
-    description: 'Branch to track (defaults to current branch)'
-    required: false
-    default: ''
   filename:
     description: 'Path to version tracker file (JSON)'
     required: false
@@ -24,4 +20,4 @@ runs:
       shell: bash
       run: |
         chmod +x ${{ github.action_path }}/entrypoint.sh
-        ${{ github.action_path }}/entrypoint.sh "${{ inputs.branch }}" "${{ inputs.filename }}"
+        ${{ github.action_path }}/entrypoint.sh "${{ inputs.filename }}"
