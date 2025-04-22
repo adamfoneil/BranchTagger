@@ -48,11 +48,15 @@ git push origin "$TAG"
 
 # so that individual apps can know the version number
 for path in $OUTPUT_PATHS; 
-do 
-  echo "Writing version to $path/version.txt"  
-  echo "$TAG" > "$path/version.txt"
+  do echo "Writing version to $path/version.txt" 
+  mkdir -p "$path" echo "$TAG" > "$path/version.txt"
+  git add "$path/version.txt" 
+  echo "Staged $path/version.txt" 
 done
 
 # update the global version number for the next run
 jq --arg commitId "$COMMIT_ID" --argjson version "$VERSION" \
 '.next = ($version + 1) | .commitId = $commitId' "$TRACKER" > tmp.json && mv tmp.json "$TRACKER"
+git add "$TRACKER"
+git commit -m "Update $TRACKER"
+git push
