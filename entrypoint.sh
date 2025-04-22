@@ -22,6 +22,8 @@ LAST_COMMIT=$(jq -r '.commitId // ""' "$TRACKER")
 # CASE: commit ID hasn't changed
 if [ "$COMMIT_ID" == "$LAST_COMMIT" ]; then 
   echo "Commit unchanged, skipping version bump"
+  echo "" > tag.txt
+  echo "true" > skip.txt
   echo "skip=true" >> "$GITHUB_OUTPUT"
   echo "tag=" >> "$GITHUB_OUTPUT"
   exit 0
@@ -30,6 +32,8 @@ fi
 # CASE: only tracker file was modified
 if [ "$CHANGED_COUNT" -eq 1 ] && [ "$CHANGED_FILES" = "$TRACKER" ]; then
   echo "Only $TRACKER was changed — skipping version tag"
+  echo "" > tag.txt
+  echo "true" > skip.txt
   echo "skip=true" >> "$GITHUB_OUTPUT"
   echo "tag=" >> "$GITHUB_OUTPUT"
   exit 0
@@ -64,6 +68,9 @@ git commit -m "Update $TRACKER"
 git push
 
 # set outputs for GitHub Actions
-echo "output: tag = $TAG, skip = false"
 echo "tag=$TAG" >> "$GITHUB_OUTPUT"
 echo "skip=false" >> "$GITHUB_OUTPUT"
+
+# also echo to temp file to grab in composite action
+echo "$TAG" > tag.txt
+echo "false" > skip.txt
