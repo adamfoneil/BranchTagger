@@ -1,23 +1,31 @@
 name: 'Set Version'
-description: 'Tags the repo with an incremented version number if the latest commit has changed'
-author: 'Adam Oneil'
+description: 'Increments version and outputs tag and skip'
 inputs:
-  filename:
-    description: 'Path to version tracker file (JSON)'
+  tracker:
+    description: 'Path to version tracker'
     required: false
-    default: 'version.json'
+    default: version.json
 
 outputs:
   tag:
-    description: 'The tag that was applied (if any)'
+    description: 'The version tag'
+    value: ${{ steps.extract.outputs.tag }}
   skip:
-    description: 'true if no tag was applied'
+    description: 'Whether to skip the version step'
+    value: ${{ steps.extract.outputs.skip }}
 
 runs:
   using: 'composite'
   steps:
-    - name: Run tagger
+    - name: Run version script
       shell: bash
       run: |
         chmod +x ${{ github.action_path }}/entrypoint.sh
-        ${{ github.action_path }}/entrypoint.sh "${{ inputs.filename }}"
+        ${{ github.action_path }}/entrypoint.sh "${{ inputs.tracker }}"
+
+    - name: Extract outputs
+      id: extract
+      shell: bash
+      run: |
+        echo "tag=$(cat tag.txt)" >> "$GITHUB_OUTPUT"
+        echo "skip=$(cat skip.txt)" >> "$GITHUB_OUTPUT"
