@@ -54,3 +54,7 @@ I had an earlier iteration of this that used the GitHub Actions `run_number` as 
 
 # Consuming in an Application
 Having the version number in git history as a tag is a good start. Showing it in the UI of your apps is a natural next step. What you need now is to read the `version.txt` file created in the `outputPaths` that you set above. In the example above, I have `BlazorApp`. There are many ways to do this, but they start with ensuring that the `version.txt` file is copied to your build output. Here's how I do this in the demo app: [show version info in UI](https://github.com/adamfoneil/LiteInvoice/commit/d65ffce03b02be1a2d7eb2c58e906aeb798075c4).
+
+![image](https://github.com/user-attachments/assets/53f9c17f-3103-4e09-890d-16cbea0ee4a3)
+
+Source: [AppInfo.razor](https://github.com/adamfoneil/LiteInvoice/blob/master/BlazorApp/Components/Pages/Home/AppInfo.razor). Note, I use [Pekspro Build Info Generator](https://github.com/pekspro/BuildInformationGenerator) to get info like the commit Id and build date. (It would be really nice if it included the latest tag, but it doesn't.)
