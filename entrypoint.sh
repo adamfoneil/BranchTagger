@@ -64,5 +64,6 @@ git commit -m "Update $TRACKER"
 git push
 
 # set outputs for GitHub Actions
+echo "output: tag = $TAG, skip = false"
 echo "tag=$TAG" >> "$GITHUB_OUTPUT"
 echo "skip=false" >> "$GITHUB_OUTPUT"
