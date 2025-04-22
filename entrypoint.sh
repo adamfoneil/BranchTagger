@@ -16,7 +16,7 @@ echo "🔍 CHANGED_FILES:"
 echo "$CHANGED_FILES" | sed 's/^/ - /'
 
 CHANGED_COUNT=$(echo "$CHANGED_FILES" | wc -l)
-COMMIT_ID=$(git rev-parse HEAD^)
+COMMIT_ID=$(git rev-parse HEAD)
 LAST_COMMIT=$(jq -r '.commitId // ""' "$TRACKER")
 echo "Tracked commit = $LAST_COMMIT, compare with = $COMMIT_ID"
 
