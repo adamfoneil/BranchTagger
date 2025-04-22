@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-TRACKER=$1
+TRACKER=${1:-version.json}
 
 if [ ! -f "$TRACKER" ]; then 
   echo "Tracker file not found: $TRACKER"
