@@ -45,12 +45,9 @@ https://chatgpt.com/share/68025295-54c8-8011-abbb-7cf6e24f1499
 
 Here's what the version tagging looks like in git history:
 
-![image](https://github.com/user-attachments/assets/7ea82f04-d612-4037-bbf2-52c1ece952ca)
+![image](https://github.com/user-attachments/assets/a7fb9008-29a8-4505-9eed-0b05a7e88f96)
 
-# To do
-The next step here is to make the version number visible somewhere in the application. Currently it's only in your git history. It would be nice to see the version number somewhere in your app. I was hoping something like [Pekspro.BuildInformationGenerator](https://github.com/pekspro/BuildInformationGenerator) would have tag info, but it doesn't seem to.
-
-Moreover, another requirement I think is the ability to have different "projects" within a repo. A single repo may have multiple apps or build outputs, each with an independent version sequence. Technically, you can pass your own version tracker file today, but I haven't tested this on "multi-app" repos.
+Note, I had an earlier iteration of this that included the branch name in the tag, but I've removed this.
 
 # What this is not
 I had an earlier iteration of this that used the GitHub Actions `run_number` as a tag. That was the wrong approach because the run number increments even if there's no code change. This action looks at your commit history to determine if there's an actual change. It's not dependent on the run number.
