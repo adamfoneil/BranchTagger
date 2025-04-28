@@ -13,6 +13,9 @@ To use this, create a file in the root of your repo called `version.json` like t
 }
 ```
 
+**Tip** When running this for the first time, there's no need for a valid `commitId` in your version.json file. Just put a dummy value. The workflow will overwrite it with a valid value.
+
+
 Example:
 
 ```json
